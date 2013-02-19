@@ -1,11 +1,8 @@
 #PyMiner version 0.1
 
-This project was developed in order to create an easy to use command line tool that
-will let you manipulate websites in a few ways. We hope to make it easy to pull down
-images, links, and statistics. As the project develops I will lay out everything it 
-will perform in a more structured way.
+This module is used to pull down data from various web sites. It's currently in it's first release and only able to pull down images from sites with some flukes. In the future we look to add features such as creating statistics from web page data and are still brainstorming for ideas any thing that would be useful to you let us know.
 
-Thanks for your interest,
-EatingTheNight
+Thanks for looking at this project that is still in a very early stage.
 
-eatingthenight@gmail.com
+Contact:
+EatingTheNight@gmail.com

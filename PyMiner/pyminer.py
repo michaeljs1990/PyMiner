@@ -6,7 +6,10 @@ import os.path
 def saveImgs(source):
     filename = os.path.basename(source)
     path = os.path.abspath(filename)
-    print "[*] Downloading " + filename
+    if len(filename) > 10:
+        print "[*] Downloading " + filename[0:10]
+    else:
+        print "[*] Downloading " + filename
     try:
         url = urllib2.urlopen(source).read()
     except Exception, e:
@@ -44,7 +47,7 @@ def main():
     parser.add_option('-w', '--web', dest='webpage', help='webpage that you want data from')
     parser.add_option('-i', '--img', dest='images', help='grabs all images from a webpage')
     (options, args) = parser.parse_args()
-    if len((options,args)) != 2:
+    if len(args) != 0 or isinstance(options.webpage, str) != True:
         parser.error('Syntax: -w www.example.com --img [imgName]')
     #more exception handeling to be implimented here
     webpage = options.webpage
