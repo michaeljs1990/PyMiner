@@ -1,43 +1,23 @@
 import optparse
 import urllib2
-import bs4
-import os.path
-
-def saveImgs(source):
-    filename = os.path.basename(source)
-    path = os.path.abspath(filename)
-    if len(filename) > 10:
-        print "[*] Downloading " + filename[0:10]
-    else:
-        print "[*] Downloading " + filename
-    try:
-        url = urllib2.urlopen(source).read()
-    except Exception, e:
-        url = urllib2.urlopen('http:' + source).read()
-    fileDownload = open(path, 'w')
-    fileDownload.write(url)
-    fileDownload.close()
-    
-
-def getImgs(sourceCode):
-    soup = bs4.BeautifulSoup(sourceCode)
-    soup = soup.body
-    soup = soup.find_all('a', recursive=True)
-    for img in soup:
-        img = img.get('href')
-        try:
-            if any(ext in img for ext in ['.jpg', '.png', '.gif', '.jpeg']):
-                saveImgs(img)
-        except Exception, e:
-            print e
+import getImgs
 
 
 def getPage(webpage):
-    #Grabs source code from page
-    url = urllib2.urlopen(webpage)
-    data = url.read()
-    url.close()
-    return data
+    #Grabs source code from page program terminated if url is invalid.
+    #Needs a rewrite from urllib2 to python-request lib to do problems
+    #with pulling down some pages.
+    try:
+        if webpage.find('http://') != -1:
+            url = urllib2.urlopen(webpage)
+        else:
+            webpage = 'http://' + webpage
+            url = urllib2.urlopen(webpage)
+        data = url.read()
+        url.close()
+        return data
+    except Exception:
+        print "Problem getting page source. This could be caused by slow server response time or a bad url."
 
 
 def main():
@@ -45,15 +25,13 @@ def main():
     usage = 'usage: %prog [options] arg'
     parser = optparse.OptionParser(usage)
     parser.add_option('-w', '--web', dest='webpage', help='webpage that you want data from')
-    parser.add_option('-i', '--img', dest='images', help='grabs all images from a webpage')
     (options, args) = parser.parse_args()
     if len(args) != 0 or isinstance(options.webpage, str) != True:
         parser.error('Syntax: -w www.example.com --img [imgName]')
     #more exception handeling to be implimented here
     webpage = options.webpage
-    images = options.images
     sourceCode = getPage(webpage)
-    getImgs(sourceCode)
+    getImgs.getImgs(sourceCode)
 
 
 if __name__ == "__main__":
