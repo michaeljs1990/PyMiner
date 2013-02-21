@@ -1,8 +1,11 @@
 #Keep edits short and sweet with the exception of a major change in code.
 
-16-2-13: Added README file to git
-17-2-13: Pushed out version 0.1 which allows you to pull down images from pages
-18-2-13: Added LICENSE as well as this UPDATE file
+16-2-13: Added README file to git.
+17-2-13: Pushed out version 0.1 which allows you to pull down images from pages.
+18-2-13: Added LICENSE as well as this UPDATE file.
 20-2-13: Fixed and split code into modules for easy error checking.
          I also added a function that lets you choose where to save files.
          Overall readability improvements and simplification of code.
+21-2-13: Improved UI for displaying filesize for each download.
+         Documented errors that are occuring under Issues Tab.
+         Improved downloading by checking for already existing files.
