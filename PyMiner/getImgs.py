@@ -6,8 +6,6 @@ import os
 def saveImgs(img, path):
     filename = os.path.basename(img)
     path = path + filename
-    if os.path.exists(path):
-        return
     try:
         url = urllib2.urlopen(img).read()
     except Exception:
@@ -27,12 +25,10 @@ def getImgs(sourceCode):
     path = setPath.setPath()
     soup = bs4.BeautifulSoup(sourceCode)
     soup = soup.find_all('a', recursive=True, limit=None)
-    print soup
-    return
     for img in soup:
         img = img.get('href')
         try:
-            if any(ext in img for ext in ['.jpg', '.png', '.gif', '.jpeg']) and type(img) != None:
+            if any(ext in img for ext in ['.jpg', '.png', '.gif', '.jpeg']):
                 saveImgs(img, path)
-        except Exception, e:
-            print e
+        except Exception:
+            pass #This is used to escape hrefs that have been empty set
