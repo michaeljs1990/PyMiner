@@ -15,8 +15,8 @@ def saveImgs(img, path):
     fileDownload.close()
     fileSize = os.path.getsize(path)
     fileSize = fileSize / 1024
-    if len(filename) > 10:
-        print "[*] Downloading " + filename[0:10] + ' size: ' + str(fileSize) + 'kB'
+    if len(filename) > 20:
+        print "[*] Downloading " + filename[0:20] + ' size: ' + str(fileSize) + 'kB'
     else:
         print "[*] Downloading " + filename + ' size: ' + str(fileSize) + 'kB'
     
@@ -29,6 +29,7 @@ def getImgs(sourceCode):
         img = img.get('href')
         try:
             if any(ext in img for ext in ['.jpg', '.png', '.gif', '.jpeg']):
-                saveImgs(img, path)
-        except Exception:
+                if os.path.isfile(path + os.path.basename(img)) == False:
+                    saveImgs(img, path)
+        except Exception, e:
             pass #This is used to escape hrefs that have been empty set

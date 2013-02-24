@@ -9,3 +9,6 @@
 21-2-13: Improved UI for displaying filesize for each download.
          Documented errors that are occuring under Issues Tab.
          Improved downloading by checking for already existing files.
+23-2-13: Fixed various bugs and found the source of a sex errors.
+         See github issues pages for more issues on this.
+         Fixed issue with some images downloading twice.
