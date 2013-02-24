@@ -2,10 +2,7 @@
 
 All code is currently being tested on an ubuntu OS. 
 
-This module is a simple script that lets you pull down all the pictures from any web page you may find. All features are working as of now
-and more may be added in the future. The only place you will run into trouble is if the page you are trying to view requires some kind of user
-validation. Example of this could be a gaming site that asks you to check age before you can go on. A feature to work around this may be 
-implimented in the future.
+This module is a simple script that lets you pull down all the pictures from any web page you may find. All features are working as of now and more may be added in the future. The only place you will run into trouble is if the page you are trying to view requires some kind of user validation. Example of this could be a gaming site that asks you to check age before you can go on. A feature to work around this may be implimented in the future.
 
 Contact:
 EatingTheNight@gmail.com
